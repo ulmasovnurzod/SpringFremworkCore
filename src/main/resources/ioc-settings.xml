@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="myBean" class="uz.pdp.xmlConfigBeans.MyBean"/>
+    <bean id="myBean2" class="uz.pdp.xmlConfigBeans.MyBean2">
+        <constructor-arg name="myBean" ref="myBean"/>
+    </bean>
+
+<!--    constructor ingection-->
+
+<!--    <bean name="person" class="uz.pdp.xmlConfigBeans.Person">-->
+<!--        <constructor-arg index="0" value="Nurzod O'lmasov"/>-->
+<!--        <constructor-arg index="1" value="25"/>-->
+<!--    </bean>-->
+
+
+<!--    setter ingection-->
+<!--    <bean name="person" class="uz.pdp.xmlConfigBeans.Person">-->
+<!--        <property name="fullName" value="Bunyod O'lmasov"/>-->
+<!--        <property name="age" value="25"/>-->
+
+<!--    </bean>-->
+
+
+<!--    c-namespase-->
+<!--    <bean name="person" class="uz.pdp.xmlConfigBeans.Person"-->
+<!--    c:fullName="Bekzod" c:age="12"/>-->
+
+    <!--    p - namespase-->
+    <bean name="person" class="uz.pdp.xmlConfigBeans.Person"
+          factory-method="getInstance"
+          init-method="init"
+          destroy-method="destroy"
+          p:fullName="Bekzod" p:age="10">
+
+    <property name="neckName">
+
+        <list>
+            <value>Nurzod</value>
+            <value>Bunyod</value>
+            <value>Dilnira</value>
+            <value>Gulmira</value>
+        </list>
+    </property>
+        <property name="neckNameMap">
+            <map>
+                <entry key="aka" value="Nurzod"/>
+                <entry key="uka" value="Bunyod"/>
+            </map>
+        </property>
+
+
+
+    </bean>
+
+
+
+
+
+
+
+
+</beans>
